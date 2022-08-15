@@ -87,7 +87,7 @@ private struct WrapperPagerTabStripView<Content>: View where Content: View {
             .offset(x: self.translation)
             .animation(.interactiveSpring(response: 0.5, dampingFraction: 1.00, blendDuration: 0.25), value: selection)
             .animation(.interactiveSpring(response: 0.15, dampingFraction: 0.86, blendDuration: 0.25), value: translation)
-            .gesture(
+            .highPriorityGesture(
                 DragGesture(minimumDistance: 25).updating(self.$translation) { value, state, _ in
                     guard swipeGestureEnabled else { return }
                     if selection == 0 && value.translation.width > 0 {
